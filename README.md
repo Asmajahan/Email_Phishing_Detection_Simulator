@@ -3,7 +3,7 @@
 
 A machine learning-powered app that detects phishing emails using NLP and binary keyword features. Built with Streamlit, this simulator analyzes raw email content and flags it as **phishing** or **legit** based on patterns learned from real-world email data.
 
-**Live Demo**: _\[Add deployment link here\]_
+**Live Demo**: https://emailphishingdetectionsimulator-cjjghqcjg4w2teycr6beb7.streamlit.app/
 
 * * *
 
