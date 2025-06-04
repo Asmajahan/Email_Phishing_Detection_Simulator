@@ -3,10 +3,15 @@ import joblib
 import re
 import numpy as np
 from scipy.sparse import hstack, csr_matrix
+import os
 
-# === Load model and TF-IDF vectorizer ===
-model = joblib.load(r"C:\Users\asmaj\Downloads\email-phishing-simulator\data\notebooks\app\model\phishing_model.pkl")
-vectorizer = joblib.load(r"C:\Users\asmaj\Downloads\email-phishing-simulator\data\notebooks\app\model\tfidf_vectorizer.pkl")
+# === Load model and TF-IDF vectorizer using relative paths ===
+current_dir = os.path.dirname(__file__)
+model_path = os.path.join(current_dir, "model", "phishing_model.pkl")
+vectorizer_path = os.path.join(current_dir, "model", "tfidf_vectorizer.pkl")
+
+model = joblib.load(model_path)
+vectorizer = joblib.load(vectorizer_path)
 
 # === Utility functions ===
 def clean_email(text):
