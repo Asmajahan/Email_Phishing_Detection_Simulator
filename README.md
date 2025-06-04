@@ -1,86 +1,143 @@
-# 🛡️ Email Phishing Detection Simulator
+🛡️ Email Phishing Detection Simulator
+======================================
 
-A machine learning-powered app that detects phishing emails using NLP and binary features. Built with Streamlit, this simulator analyzes raw email content and flags it as **phishing** or **legit** based on patterns learned from real-world email data.
+A machine learning-powered app that detects phishing emails using NLP and binary keyword features. Built with Streamlit, this simulator analyzes raw email content and flags it as **phishing** or **legit** based on patterns learned from real-world email data.
 
-Live Demo: _[Add deployment link here]_
+**Live Demo**: _\[Add deployment link here\]_
 
----
+* * *
 
-## 🔍 Project Overview
+🔍 Project Overview
+-------------------
 
-This app is part of a cybersecurity simulation to demonstrate how phishing detection can be automated using machine learning. The model was trained on a custom dataset combining subject and body of emails, cleaned with NLP techniques, and enhanced with binary keyword-based features.
+This app is a cybersecurity-focused simulator that demonstrates how phishing detection can be automated using machine learning. It takes raw email content (subject + body), processes it with NLP techniques, and enhances detection using key binary indicators like the presence of links, money-related terms, urgency, and bank-related keywords.
 
----
+The model is trained using a Random Forest classifier with TF-IDF vectorization, offering strong accuracy and practical value.
 
-## 🚀 Features
+* * *
 
-- 📬 Accepts raw email input (subject + body)
-- 🧹 Text cleaning + binary feature extraction
-- 🧠 ML model using Random Forest + TF-IDF vectorization
-- 💻 Built with Streamlit (easy to use UI)
-- 📊 Classification output: Legit or Phishing
-- ✅ Clean, tested, and ready for deployment
+🚀 Features
+-----------
 
----
+*   📬 Accepts raw email input (subject + body combined)
+    
+*   🧹 Preprocesses text: lowercasing, HTML tag and punctuation removal
+    
+*   🧠 Adds binary features for phishing indicators (e.g., links, urgent words)
+    
+*   🤖 Trained using Random Forest + TF-IDF
+    
+*   💻 Streamlit app for an intuitive user interface
+    
+*   ⚠️ Flags emails as **Phishing** or **Legit**
+    
+*   ✅ Modular, tested, and ready for deployment
+    
+
+* * *
 
 ## 🗂️ Project Structure
 
-📁 EMAIL-PHISHING-SIMULATOR  
-├── 📁 data  
-│   ├── email_dataset.csv                  # Original or raw dataset  
-│   └── 📁 notebooks  
-│       └── 📁 app\model  
-│           ├── email_app.py               # Main backend script for Streamlit app  
-│           ├── phishing_model.pkl         # Trained phishing detection model  
-│           ├── tfidf_vectorizer.pkl       # TF-IDF vectorizer used for email preprocessing  
-│           ├── combined_email_dataset.csv # Combined and cleaned dataset  
-│           └── emaildata.ipynb            # Jupyter notebook for EDA and model training  
-├── README.md                              # Project overview and documentation  
-└── requirements.txt                       # List of Python dependencies  
+```
+EMAIL-PHISHING-SIMULATOR/
+├── app/
+│   └── email_app.py               # Streamlit UI + model prediction code
+├── data/
+│   ├── email_dataset.csv          # Raw labeled email data
+│   └── combined_email_dataset.csv # Cleaned and combined data (generated after training)
+├── model/
+│   ├── phishing_model.pkl         # Trained ML model (Random Forest)
+│   └── tfidf_vectorizer.pkl       # TF-IDF vectorizer used for preprocessing
+├── notebooks/
+│   └── emaildata.ipynb            # Jupyter notebook to train and save model
+├── requirements.txt               # Python dependencies
+└── README.md                      # You’re reading it!
+```
 
----
 
-## 📦 Installation & Running Locally
+* * *
 
-Clone the repo:
+📦 Installation & Running Locally
+---------------------------------
 
-```bash
+### 1\. Clone the repository:
+
+```
 git clone https://github.com/yourusername/email-phishing-simulator.git
 cd email-phishing-simulator
 ```
----
-### Install Dependencies
 
-```bash
-pip install -r requirements.txt
-```
----
-### Run Streamlit App
+### 2\. Install required packages:
 
-```bash
-streamlit run data/notebooks/app/model/email_app.py
-```
-## 🧠 Model Overview
+`pip install -r requirements.txt` 
+
+### 3\. Train the model (if not done already):
+
+`# Run this inside the notebooks/emaildata.ipynb` 
+
+This generates:
+
+*   `model/phishing_model.pkl`
+    
+*   `model/tfidf_vectorizer.pkl`
+    
+*   `data/combined_email_dataset.csv`
+    
+
+### 4\. Run the Streamlit app:
+
+`streamlit run app/email_app.py` 
+
+* * *
+
+🧠 Model Overview
+-----------------
 
 **Preprocessing:**
-- Cleaned HTML tags, punctuation, and stopwords
+
+*   Lowercase conversion
+    
+*   HTML tag removal
+    
+*   Punctuation and stopword cleaning
+    
 
 **Feature Extraction:**
-- TF-IDF vectorization (top 5000 words)
-- Binary keyword presence (e.g., `"bank"`, `"win"`, `"urgent"`, links)
 
-**Model:** Random Forest Classifier  
-**Accuracy:** ~90% on validation set  
-**Dataset:** Custom labeled phishing vs. legit emails
+*   TF-IDF vectorization (top 5000 terms)
+    
+*   Binary features:
+    
+    *   Contains a link
+        
+    *   Contains urgency terms
+        
+    *   Contains money-related words
+        
+    *   Contains bank/account terms
+        
 
-## ✅ Use Cases
+**Model Used:** Random Forest Classifier  
+**Accuracy:** ~90% on test split  
+**Dataset:** Custom labeled set of phishing and legit emails
 
-- Phishing training simulator for cybersecurity students  
-- Live demo for real-time threat detection  
-- Email content scanners (future integration)
+* * *
 
----
+✅ Use Cases
+-----------
 
-## 🧾 License
+*   📚 Cybersecurity training tool for students
+    
+*   🧪 Simulation for phishing awareness campaigns
+    
+*   🛡️ Foundation for building real-time phishing detection systems
+    
+*   🧰 Integration-ready tool for future email security scanners
+    
+
+* * *
+
+🧾 License
+----------
 
 This project is licensed under the **MIT License**.
